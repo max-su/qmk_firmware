@@ -5,10 +5,10 @@
 #define SYMB 1 // Symbols
 #define ARRW 2 // HJKL => Arrow keys, fn keys
 #define NUMB 3 // Numbers
-#define HSVLIGHT_COLOR_LAYER_0 345, 37, 100 // Pink
-#define HSVLIGHT_COLOR_LAYER_1 5, 51, 97 // Coral
-#define HSVLIGHT_COLOR_LAYER_2 208, 6, 100 // Alice Blue
-#define HSVLIGHT_COLOR_LAYER_3 203, 46, 98 // Sky Blue
+#define RGBLIGHT_COLOR_LAYER_0 203, 46, 100 // Pink
+#define RGBLIGHT_COLOR_LAYER_1 0xe7, 0xcc, 0xf1 // Eggshell White
+#define RGBLIGHT_COLOR_LAYER_2 0xff, 0x00, 0x00 // Orange
+#define RGBLIGHT_COLOR_LAYER_3 0x76, 0xD7, 0xD6 // Cyan
 
 
 enum custom_keycodes {
@@ -197,7 +197,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case VRSN:
         SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
         return false;
-      #ifdef HSVLIGHT_ENABLE
+      #ifdef RGBLIGHT_ENABLE
       case RGB_SLD:
         rgblight_mode(1);
         return false;
@@ -213,8 +213,8 @@ void matrix_init_user(void) {
     ergodox_right_led_1_on();
     ergodox_right_led_2_on();
     ergodox_right_led_3_on();
-#ifdef HSVLIGHT_COLOR_LAYER_0
-    rgblight_sethsv(HSVLIGHT_COLOR_LAYER_0);
+#ifdef RGBLIGHT_COLOR_LAYER_0
+    rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
 #endif
 };
 
@@ -231,59 +231,59 @@ uint32_t layer_state_set_user(uint32_t state) {
         ergodox_right_led_1_on();
         ergodox_right_led_2_on();
         ergodox_right_led_3_on();
-        #ifdef HSVLIGHT_COLOR_LAYER_0
-          rgblight_sethsv(HSVLIGHT_COLOR_LAYER_0);
+        #ifdef RGBLIGHT_COLOR_LAYER_0
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
         #else
-        #ifdef HSVLIGHT_ENABLE
+        #ifdef RGBLIGHT_ENABLE
           rgblight_init();
         #endif
         #endif
         break;
       case 1:
         ergodox_right_led_1_on();
-        #ifdef HSVLIGHT_COLOR_LAYER_1
-          rgblight_sethsv(HSVLIGHT_COLOR_LAYER_1);
+        #ifdef RGBLIGHT_COLOR_LAYER_1
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
         #endif
         break;
       case 2:
         ergodox_right_led_2_on();
-        #ifdef HSVLIGHT_COLOR_LAYER_2
-          rgblight_sethsv(HSVLIGHT_COLOR_LAYER_2);
+        #ifdef RGBLIGHT_COLOR_LAYER_2
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
         #endif
         break;
       case 3:
         ergodox_right_led_3_on();
-        #ifdef HSVLIGHT_COLOR_LAYER_3
-          rgblight_sethsv(HSVLIGHT_COLOR_LAYER_3);
+        #ifdef RGBLIGHT_COLOR_LAYER_3
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
         #endif
         break;
       case 4:
         ergodox_right_led_1_on();
         ergodox_right_led_2_on();
-        #ifdef HSVLIGHT_COLOR_LAYER_4
-          rgblight_sethsv(HSVLIGHT_COLOR_LAYER_4);
+        #ifdef RGBLIGHT_COLOR_LAYER_4
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_4);
         #endif
         break;
       case 5:
         ergodox_right_led_1_on();
         ergodox_right_led_3_on();
-        #ifdef HSVLIGHT_COLOR_LAYER_5
-          rgblight_sethsv(HSVLIGHT_COLOR_LAYER_5);
+        #ifdef RGBLIGHT_COLOR_LAYER_5
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_5);
         #endif
         break;
       case 6:
         ergodox_right_led_2_on();
         ergodox_right_led_3_on();
-        #ifdef HSVLIGHT_COLOR_LAYER_6
-          rgblight_sethsv(HSVLIGHT_COLOR_LAYER_6);
+        #ifdef RGBLIGHT_COLOR_LAYER_6
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
         #endif
         break;
       case 7:
         ergodox_right_led_1_on();
         ergodox_right_led_2_on();
         ergodox_right_led_3_on();
-        #ifdef HSVLIGHT_COLOR_LAYER_7
-          rgblight_sethsv(HSVLIGHT_COLOR_LAYER_7);
+        #ifdef RGBLIGHT_COLOR_LAYER_7
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
         #endif
         break;
       default:
