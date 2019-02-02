@@ -7,7 +7,7 @@
 #define NUMB 3 // Numbers
 #define RGBLIGHT_COLOR_LAYER_0 203, 46, 100 // Pink
 #define RGBLIGHT_COLOR_LAYER_1 0xe7, 0xcc, 0xf1 // Eggshell White
-#define RGBLIGHT_COLOR_LAYER_2 0xff, 0x00, 0x00 // Red
+#define RGBLIGHT_COLOR_LAYER_2 0xdc, 0x14, 0x3c // Deeper Pink
 #define RGBLIGHT_COLOR_LAYER_3 0x76, 0xD7, 0xD6 // Cyan
 
 
