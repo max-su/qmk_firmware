@@ -1,14 +1,16 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
-#define BASE 0 // Default layer
-#define SYMB 1 // Symbols
-#define ARRW 2 // HJKL => Arrow keys, fn keys
-#define NUMB 3 // Numbers
+#define BASE_OSX 0 // Default layer (Mac OSX)
+#define BASE_WINDOWS 1 // Default layer (Windows)
+#define SYMB 2 // Symbols
+#define ARRW 3 // HJKL => Arrow keys, fn keys
+#define NUMB 4 // Numbers
 #define RGBLIGHT_COLOR_LAYER_0 203, 46, 100 // Pink
-#define RGBLIGHT_COLOR_LAYER_1 0xe7, 0xcc, 0xf1 // Eggshell White
-#define RGBLIGHT_COLOR_LAYER_2 0xdc, 0x14, 0x3c // Deeper Pink
-#define RGBLIGHT_COLOR_LAYER_3 0x76, 0xD7, 0xD6 // Cyan
+#define RGBLIGHT_COLOR_LAYER_1 203, 46, 100 // Pink
+#define RGBLIGHT_COLOR_LAYER_2 0xe7, 0xcc, 0xf1 // Eggshell White
+#define RGBLIGHT_COLOR_LAYER_3 0xdc, 0x14, 0x3c // Deeper Pink
+#define RGBLIGHT_COLOR_LAYER_4 0x76, 0xD7, 0xD6 // Cyan
 
 
 enum custom_keycodes {
@@ -39,9 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |ace   |  L3  |       |      |        |      |
  *                                 `--------------------'       `----------------------'
  */
-[BASE] = LAYOUT_ergodox(
+[BASE_OSX] = LAYOUT_ergodox(
   // Left Hand.
-  KC_CAPS, KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_TRNS,
+  KC_CAPS, KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    DF(BASE_WINDOWS),
   KC_TAB,  KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    MO(ARRW),
   KC_ESC,  KC_A,        KC_S,          LT(NUMB, KC_D),    LT(ARRW, KC_F),    KC_G,
   KC_LSFT, KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    MO(SYMB),
@@ -50,14 +52,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                           KC_MPLY,
                                                          KC_SPC, KC_BSPC, MO(NUMB),
   // Right Hand.
-  KC_LCTRL,  KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_MINS,
+  KC_LGUI,  KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_MINS,
   MO(ARRW),  KC_Y,    KC_U,    KC_I,    KC_O,              KC_P,           KC_BSLS,
   KC_H,     KC_J,    KC_K,    KC_L,    LT(ARRW, KC_SCLN), KC_QUOT,
   MO(SYMB), KC_N,    KC_M,    KC_COMM, KC_DOT,            KC_SLSH, KC_RSFT,
   KC_LGUI,  KC_LALT, KC_LCTRL, KC_LEFT, KC_RGHT,
   KC__VOLDOWN, KC__VOLUP,
   KC__MUTE,
-  KC_TRNS, KC_TAB, KC_ENT
+  TG(ARRW), KC_TAB, KC_ENT
+),
+
+[BASE_WINDOWS] = LAYOUT_ergodox(
+  // Left Hand.
+  KC_CAPS, KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    DF(BASE_OSX),
+  KC_TAB,  KC_Q,        KC_W,          KC_E,    KC_R,    KC_T,    MO(ARRW),
+  KC_ESC,  KC_A,        KC_S,          LT(NUMB, KC_D),    LT(ARRW, KC_F),    KC_G,
+  KC_LSFT, KC_Z,        KC_X,          KC_C,    KC_V,    KC_B,    MO(SYMB),
+  KC_MINS, KC_PLUS,     KC_LCTRL,       KC_LALT,  KC_LGUI,
+                                                                KC_MPRV,  KC_MNXT,
+                                                                          KC_MPLY,
+                                                         KC_SPC, KC_BSPC, MO(NUMB),
+  // Right Hand.
+  KC_LCTRL,  KC_6,    KC_7,    KC_8,    KC_9,              KC_0,           KC_MINS,
+  MO(ARRW),  KC_Y,    KC_U,    KC_I,    KC_O,              KC_P,           KC_BSLS,
+  KC_H,     KC_J,    KC_K,    KC_L,    LT(ARRW, KC_SCLN), KC_QUOT,
+  MO(SYMB), KC_N,    KC_M,    KC_COMM, KC_DOT,            KC_SLSH, KC_RSFT,
+  KC_LGUI,  KC_LALT, KC_LCTRL, KC_LEFT, KC_RGHT,
+  KC_VOLD, KC_VOLU,
+  KC_MUTE,
+  TG(ARRW), KC_TAB, KC_ENT
 ),
 /* Keymap 1: Symbol Layer
  *
