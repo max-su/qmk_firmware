@@ -609,3 +609,10 @@ BUILD_DATE := NA
 endif
 
 include $(ROOT_DIR)/testlist.mk
+
+.PHONY: docker-build hex
+docker-build: hex
+	docker build -t qmk_firmware .
+
+hex:
+	docker run --rm -it -v `pwd`:/qmk_firmware qmk_firmware:latest

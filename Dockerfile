@@ -26,4 +26,4 @@ VOLUME /qmk_firmware
 WORKDIR /qmk_firmware
 COPY . .
 
-CMD make all:default
+CMD make ergodox_ez:max_su
