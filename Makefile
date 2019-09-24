@@ -615,4 +615,4 @@ docker-build: hex
 	docker build -t qmk_firmware .
 
 hex:
-	docker run --rm -it -v `pwd`:/qmk_firmware qmk_firmware:latest
+	docker run --rm -it -v `pwd`:/qmk_firmware qmk_firmware
